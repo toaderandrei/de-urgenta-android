@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/configure_addresses"
+    app:startDestination="@id/create_address">
+
+    <fragment
+        android:id="@+id/create_address"
+        android:name="ro.code4.deurgenta.ui.address.ConfigureAddresses"
+        android:label="Game">
+        <action
+            android:id="@+id/action_complete"
+            app:destination="@id/complete_address"  />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/complete_address"
+        android:name="ro.code4.deurgenta.ui.address.CompleteAddress" >
+
+        <action
+            android:id="@+id/add_new_address"
+            app:destination="@id/add_new_address"  />
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_new_address"
+        android:name="ro.code4.deurgenta.ui.address.AddAnotherAddress" >
+
+        <action
+            android:id="@+id/set_meeting_point"
+            app:destination="@id/set_meeting_point"  />
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

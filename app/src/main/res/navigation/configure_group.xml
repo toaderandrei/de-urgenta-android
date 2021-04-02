@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/configure_group"
+    app:startDestination="@id/create_group">
+
+    <fragment
+        android:id="@+id/create_group"
+        android:name="ro.code4.deurgenta.ui.group.ConfigureGroup"
+        android:label="Game">
+        <action
+            android:id="@+id/action_create_group"
+            app:destination="@id/create_new_group"  />
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/create_new_group"
+        android:name="ro.code4.deurgenta.ui.group.CreateNewGroup" >
+
+        <action
+            android:id="@+id/invite_friends"
+            app:destination="@id/invite_friends_to_group"  />
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/invite_friends_to_group"
+        android:name="ro.code4.deurgenta.ui.group.InviteFriendsToGroup" >
+
+        <action
+            android:id="@+id/add_friends_to_group"
+            app:destination="@id/add_friends_to_group"  />
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_friends_to_group"
+        android:name="ro.code4.deurgenta.ui.group.AddFriendsToGroup" >
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/set_meeting_point"
+    app:startDestination="@id/set_meeting_point">
+
+    <fragment
+        android:id="@+id/set_meeting_point"
+        android:name="ro.code4.deurgenta.ui.meetingpoint.SetMeetingPoint"
+        android:label="Game">
+        <action
+            android:id="@+id/action_complete"
+            app:destination="@id/complete_set_meeting_point"  />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/complete_set_meeting_point"
+        android:name="ro.code4.deurgenta.ui.meetingpoint.CompleteMeetingPoint" >
+
+        <action
+            android:id="@+id/complete_set_meeting_point"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+        <!-- Action back to destination which launched into this in_game_nav_graph-->
+        <action android:id="@+id/action_back_to_configure"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

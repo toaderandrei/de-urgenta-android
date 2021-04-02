@@ -10,4 +10,11 @@
 
      <dimen name="small_icon_size">16dp</dimen>
     <dimen name="medium_icon_size">32dp</dimen>
+
+    <!-- Text sizes-->
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_xxbig">40sp</dimen>
+    <dimen name="text_size_xbig">32sp</dimen>
+
 </resources>

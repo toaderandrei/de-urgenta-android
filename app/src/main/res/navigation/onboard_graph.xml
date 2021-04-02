@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboard_graph.xml"
+    app:startDestination="@id/configure_profile">
+
+    <fragment
+        android:id="@+id/configure_profile"
+        android:name="ro.code4.deurgenta.ui.profile.ConfigureProfile"
+        android:label="fragment_configure_profile">
+
+        <!-- Launch Configure addresses Navigation Graph -->
+        <action
+            android:id="@+id/configure_addressees_action"
+            app:destination="@id/configure_addresses" />
+
+        <!-- Launch Configure group Navigation Graph -->
+        <action
+            android:id="@+id/create_group_action"
+            app:destination="@id/configure_group" />
+    </fragment>
+
+    <include app:graph="@navigation/configure_addresses" />
+
+</navigation>
