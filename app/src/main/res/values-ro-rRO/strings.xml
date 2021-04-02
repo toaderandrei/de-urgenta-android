@@ -99,4 +99,32 @@
     <string name="edit_backpack_item_error_quantity">Introdu cantitatea produsului!</string>
     <string name="edit_backpack_item_error_quantity_value">"Introdu un numar pentru cantitate!"</string>
 
+    <!-- Configure account -->
+    <string name="item_description_configure_account">Configureaza-ti contul.</string>
+    <string name="create_your_account">Configureaza-ti contul.</string>
+    <string name="create_your_group">Configureaza-ti grupul.</string>
+    <string name="save_address">Salveaza adresa</string>
+    <string name="enter_your_address">Introdu adresa</string>
+    <string name="make_your_emergency_backpack">Fa-ti rucascul de urgenta.</string>
+    <string name="learn_to_give_firstaid">Invata sa dai primul ajutor.</string>
+    <string name="locate_me">Localizeaza-ma</string>
+    <string name="search_hint">Introdu adresa</string>
+    <string name="add_your_own_address">Adauga adresa ta</string>
+    <string name="more_results_found">Mai multe rezultate gasite. Te rog baga o adresa unica.</string>
+
+    <string name="unknown_error">Unknown</string>
+
+    <string name="home_address">Adresa de domiciliu.</string>
+    <string name="add_new_address">Adauga o adresa noua.</string>
+    <string name="set_meeting_point">Seteaza punct de intalnire.</string>
+    <string name="add_another_address_description">Adaugă alte adrese relevante cum ar fi cea de la birou, de la sala de sport,
+        de la alt loc pe care îl vizitezi cel puțin săptămânal.
+        Poți adăuga până la cinci adrese. După acest pas, vei putea să îți selectezi un punct de întâlnire
+        și vei putea vedea traseele dintre adresele tale și aceasta.
+    </string>
+    <string name="configure_another_address_header">Configureaza alta adresa.</string>
+    <string name="save_address_home_info">Adresa ta de domiciliu a fost salvata cu success.</string>
+    <string name="choose_address_type">Choose address type</string>
+
+
 </resources>

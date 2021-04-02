@@ -8,4 +8,12 @@
         <item>Articole de supraviețuire</item>
         <item>Diverse</item>
     </string-array>
+
+    <string-array name="choose_address">
+        <item>Acasa</item>
+        <item>La birou</item>
+        <item>Scoala</item>
+        <item>Sala de fitness</item>
+        <item>Alta</item>
+    </string-array>
 </resources>

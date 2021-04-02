@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="toolbarMessage"
+            type="String" />
+
+        <variable
+            name="visibleText"
+            type="Boolean" />
+
+    </data>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@color/white">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_save_address"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="@{toolbarMessage}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_accept"
+            android:drawablePadding="@dimen/small_margin"
+            android:text="@string/save_address_home_info"
+            android:textColor="@color/green_400"
+            android:textSize="@dimen/text_size_big"
+            app:visibleGone="@{visibleText}">
+
+        </com.google.android.material.textview.MaterialTextView>
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

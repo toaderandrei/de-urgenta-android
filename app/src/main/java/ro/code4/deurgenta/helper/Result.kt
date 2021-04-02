@@ -8,7 +8,6 @@ sealed class Result<out T> {
     class Success<out T>(val data: T? = null) : Result<T>()
     object Loading : Result<Nothing>()
 
-
     fun handle(
         onSuccess: (T?) -> Unit = {},
         onFailure: (Throwable) -> Unit = {},

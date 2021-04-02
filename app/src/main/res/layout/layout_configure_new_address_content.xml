@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homeAddress"
+            type="String" />
+
+        <variable
+            name="addNewAddressCallback"
+            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+
+        <variable
+            name="setMeetingCallback"
+            type="ro.code4.deurgenta.interfaces.ViewCallback" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/xxbig_margin">
+
+        <TextView
+            android:id="@+id/title_configure_another_address"
+            style="@style/Text.Paragraph"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/configure_another_address_header"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/configure_another_address_header" />
+
+        <TextView
+            android:id="@+id/tv_configure_another_address"
+            style="@style/Text.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xxbig_margin"
+            android:text="@string/choose_address_type"
+            app:layout_constraintEnd_toEndOf="@+id/title_configure_another_address"
+            app:layout_constraintStart_toStartOf="@+id/title_configure_another_address"
+            app:layout_constraintTop_toBottomOf="@+id/title_configure_another_address"
+            tools:text="@string/choose_address_type" />
+
+        <Spinner
+            android:id="@+id/choose_address_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/choose_address"
+            app:layout_constraintEnd_toEndOf="@+id/tv_configure_another_address"
+            app:layout_constraintStart_toStartOf="@+id/tv_configure_another_address"
+            app:layout_constraintTop_toBottomOf="@+id/tv_configure_another_address" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

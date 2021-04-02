@@ -52,13 +52,18 @@
 
     <style name="Text.Big">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/text_size_big</item>
     </style>
 
     <style name="Text.Paragraph">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_size_big</item>
         <item name="android:textColor">@color/gray_800</item>
         <item name="lineHeight">26sp</item>
+    </style>
+
+    <style name="Text.Content">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/gray_200</item>
     </style>
 
     <style name="Text.MenuList">
@@ -68,12 +73,39 @@
         <item name="lineHeight">24sp</item>
     </style>
 
-    <style name="Signup.Button" parent="Widget.MaterialComponents.Button.TextButton">
+    <!-- todo -->
+    <style name="Text.OptionItem">
+        <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="Custom.Button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
+    <style name="Custom.Button.Simple">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="textAllCaps">false</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="Custom.Button.WhiteRed">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/md_red_200</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="textAllCaps">false</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="Signup.Button" parent="Custom.Button" />
 
     <style name="Signup.Button.Simple">
         <item name="android:textColor">@color/white</item>
@@ -129,4 +161,7 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <string name="unknown_error">Unknown</string>
+
+    <dimen name="text_size_small">14sp</dimen>
 </resources>

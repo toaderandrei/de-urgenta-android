@@ -47,7 +47,8 @@ class AuthViewModel : BaseViewModel() {
     }
 
     fun onSignUpClicked() {
-        signupNavigation.postValue(Result.Success())
+        //signupNavigation.postValue(Result.Success())
+        loginLiveData.postValue(Result.Success(OnboardingActivity::class.java))
     }
 
 }
