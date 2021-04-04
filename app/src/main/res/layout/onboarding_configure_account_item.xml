@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
 
             android:gravity="center"
-            tools:text="@string/configure_account"
+            tools:text="@string/create_your_account"
 
             android:contentDescription="@string/item_description_configure_account"
 

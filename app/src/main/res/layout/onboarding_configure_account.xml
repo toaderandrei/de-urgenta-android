@@ -11,7 +11,15 @@
             type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
 
         <variable
+            name="callbackCreateGroup"
+            type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
+
+        <variable
             name="callbackBackpack"
+            type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
+
+        <variable
+            name="callbackFirstAid"
             type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
 
         <variable
@@ -41,7 +49,7 @@
             android:gravity="start"
             android:maxWidth="320dp"
             android:maxLines="3"
-            android:text="@string/configure_account"
+            android:text="@string/create_your_account"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textSize="@dimen/text_size_xbig"
             app:layout_constraintStart_toStartOf="@+id/header"
@@ -52,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/big_margin"
+            android:onClick="@{()-> callbackAddresses.configure()}"
             android:orientation="horizontal"
             android:weightSum="1"
 
@@ -75,11 +84,11 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8"
 
-                android:text="Configure Addresses"
+                android:text="@string/configure_addresses"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:textSize="@dimen/text_size_big"
 
-                tools:text="@string/configure_account" />
+                tools:text="@string/create_your_account" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_configure_arrow_address"
@@ -87,23 +96,71 @@
                 android:layout_height="@dimen/picture_size_height_medium"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.1"
-                android:onClick="@{()-> callbackAddresses.configure()}"
                 app:srcCompat="@drawable/ic_minimalist_arrow" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_configure_backpack"
+            android:id="@+id/ll_create_your_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
             android:enabled="false"
+            android:onClick="@{()-> callbackCreateGroup.configure()}"
             android:orientation="horizontal"
             android:weightSum="1"
             app:enabled="@{enabled}"
             app:layout_constraintEnd_toStartOf="@+id/right_margin_guideline"
             app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
             app:layout_constraintTop_toBottomOf="@+id/ll_configure_address">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_group"
+                android:layout_width="@dimen/picture_size_width_big"
+                android:layout_height="@dimen/picture_size_height_big"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                app:srcCompat="@drawable/ic_map_layer" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_configure_group"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+
+                android:contentDescription="@string/item_description_configure_group"
+                android:text="@string/create_your_group"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textSize="@dimen/text_size_big"
+
+                tools:text="@string/create_your_group" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_arrow_group"
+                android:layout_width="@dimen/picture_size_width_medium"
+                android:layout_height="@dimen/picture_size_height_medium"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                app:srcCompat="@drawable/ic_minimalist_arrow" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_make_your_backpack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:enabled="false"
+            android:onClick="@{()-> callbackBackpack.configure()}"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:enabled="@{enabled}"
+            app:layout_constraintEnd_toStartOf="@+id/right_margin_guideline"
+            app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/ll_create_your_group">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_configure_backpack"
@@ -123,11 +180,11 @@
                 android:layout_weight="0.8"
 
                 android:contentDescription="@string/item_description_configure_account"
-                android:text="@string/configure_group"
+                android:text="@string/make_your_emergency_backpack"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:textSize="@dimen/text_size_big"
 
-                tools:text="@string/configure_account" />
+                tools:text="@string/make_your_emergency_backpack" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_configure_arrow_backpack"
@@ -135,61 +192,59 @@
                 android:layout_height="@dimen/picture_size_height_medium"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.1"
-                android:onClick="@{()-> callbackBackpack.configure()}"
                 app:srcCompat="@drawable/ic_minimalist_arrow" />
 
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
 
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:id="@+id/ll_howto_firstaid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
             android:enabled="false"
+            android:onClick="@{()-> callbackFirstAid.configure()}"
+            android:orientation="horizontal"
+            android:weightSum="1"
             app:enabled="@{enabled}"
             app:layout_constraintEnd_toStartOf="@+id/right_margin_guideline"
             app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/ll_configure_backpack">
+            app:layout_constraintTop_toBottomOf="@+id/ll_make_your_backpack">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_configure_item"
+                android:id="@+id/iv_configure_firstaid"
                 android:layout_width="@dimen/picture_size_width_big"
                 android:layout_height="@dimen/picture_size_height_big"
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
                 app:srcCompat="@drawable/ic_map_layer" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_configure_item"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_configure_firstaid"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
 
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+
                 android:contentDescription="@string/item_description_configure_account"
-                android:gravity="center"
-
-                android:text="Configure Backpack"
+                android:text="@string/make_your_emergency_backpack"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-
                 android:textSize="@dimen/text_size_big"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_configure_item"
-                app:layout_constraintStart_toEndOf="@+id/iv_configure_item"
-                app:layout_constraintTop_toTopOf="@+id/iv_configure_item"
 
-                tools:text="@string/configure_account" />
+                tools:text="@string/learn_to_give_firstaid" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_configure_arrow_group"
+                android:id="@+id/iv_configure_arrow_firstaid"
                 android:layout_width="@dimen/picture_size_width_medium"
                 android:layout_height="@dimen/picture_size_height_medium"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_configure_item"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_configure_item"
-
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
                 app:srcCompat="@drawable/ic_minimalist_arrow" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
 
         <!-- Guidelines -->
 

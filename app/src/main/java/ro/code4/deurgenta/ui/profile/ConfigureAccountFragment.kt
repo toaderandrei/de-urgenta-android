@@ -21,7 +21,7 @@ class ConfigureAccountFragment : ViewModelFragment<ConfigureAccountViewModel>() 
         get() = R.layout.onboarding_configure_account
 
     override val screenName: Int
-        get() = R.string.configure_account
+        get() = R.string.create_your_account
 
     override val viewModel: ConfigureAccountViewModel by viewModel()
 

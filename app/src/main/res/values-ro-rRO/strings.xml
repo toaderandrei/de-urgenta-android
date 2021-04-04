@@ -20,11 +20,15 @@
     <string name="error_generic">A apărut o problemă!</string>
 
     <string name="item_description_configure_account">Configureaza-ti contul.</string>
-    <string name="configure_account">Configureaza-ti contul.</string>
-    <string name="configure_group">Configureaza-ti grupul.</string>
+    <string name="create_your_account">Configureaza-ti contul.</string>
+    <string name="create_your_group">Configureaza-ti grupul.</string>
     <string name="save_address">Salveaza adresa</string>
     <string name="add_another_addresses">Adauga adresa noua.</string>
     <string name="add_living_address">Adauga adresa de domiciliu.</string>
+    <string name="enter_your_address">Introdu adresa</string>
+    <string name="item_description_configure_group">Creaaza-ti grupul.</string>
+    <string name="make_your_emergency_backpack">Fa-ti rucascul de urgenta.</string>
+    <string name="learn_to_give_firstaid">Invata sa dai primul ajutor.</string>
 
 
 </resources>

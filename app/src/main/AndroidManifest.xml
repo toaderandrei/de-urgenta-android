@@ -4,6 +4,7 @@
     package="ro.code4.deurgenta">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="ro.code4.deurgenta.App"
@@ -14,6 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <!-- Set your credentials for the HERE SDK. -->
+        <meta-data
+            android:name="com.here.sdk.access_key_id"
+            android:value="Y4YuYYkVqtteN_u6Msqm-A" />
+        <meta-data
+            android:name="com.here.sdk.access_key_secret"
+            android:value="0t2NliJouoOxhri_2o1oYyPrlc1v8hbh1jjssf1xq3ZSAiBscXnl-h-ZtfrOBeE8ztusqTzXxLidrgQTo9775w" />
 
         <activity
             android:name="ro.code4.deurgenta.ui.login.LoginActivity"
@@ -28,13 +37,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"
-                tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name="ro.code4.deurgenta.ui.onboarding.OnboardingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-                tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name="ro.code4.deurgenta.ui.splashscreen.SplashScreenActivity"

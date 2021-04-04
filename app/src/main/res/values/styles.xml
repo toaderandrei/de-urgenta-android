@@ -39,8 +39,8 @@
         <item name="itemIconTint">@color/colorPrimary</item>
         <item name="itemTextColor">@color/colorPrimary</item>
         <item name="itemHorizontalPadding">@dimen/xbig_margin</item>
-        <item name="itemIconPadding">@dimen/margin</item>
-        <item name="itemPadding">@dimen/margin</item>
+        <item name="itemIconPadding">@dimen/medium_margin</item>
+        <item name="itemPadding">@dimen/medium_margin</item>
         <item name="itemIconSize">@dimen/small_icon_size</item>
         <item name="android:background">@color/white</item>
     </style>
