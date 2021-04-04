@@ -26,7 +26,7 @@ class LoginActivity : BaseAnalyticsActivity<LoginViewModel>() {
 
     private fun clickListenersSetup() {
         loginButton.setOnClickListener {
-            viewModel.login()
+            viewModel.login2()
         }
     }
 

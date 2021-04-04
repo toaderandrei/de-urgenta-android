@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="callbackAddresses"
+            type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
+
+        <variable
+            name="callbackBackpack"
+            type="ro.code4.deurgenta.interfaces.ConfigureCallback" />
+
+        <variable
+            name="enabled"
+            type="boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logo_red"
+            app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/top_margin_guideline" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_configure_account_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/big_margin"
+            android:gravity="start"
+            android:maxWidth="320dp"
+            android:maxLines="3"
+            android:text="@string/configure_account"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textSize="@dimen/text_size_xbig"
+            app:layout_constraintStart_toStartOf="@+id/header"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+        <LinearLayout
+            android:id="@+id/ll_configure_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:orientation="horizontal"
+            android:weightSum="1"
+
+            app:layout_constraintEnd_toStartOf="@+id/right_margin_guideline"
+            app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_configure_account_header">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_address"
+                android:layout_width="@dimen/picture_size_width_big"
+                android:layout_height="@dimen/picture_size_height_big"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                app:srcCompat="@drawable/ic_map_layer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_configure_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+
+                android:text="Configure Addresses"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textSize="@dimen/text_size_big"
+
+                tools:text="@string/configure_account" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_arrow_address"
+                android:layout_width="@dimen/picture_size_width_medium"
+                android:layout_height="@dimen/picture_size_height_medium"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:onClick="@{()-> callbackAddresses.configure()}"
+                app:srcCompat="@drawable/ic_minimalist_arrow" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_configure_backpack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:enabled="false"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:enabled="@{enabled}"
+            app:layout_constraintEnd_toStartOf="@+id/right_margin_guideline"
+            app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/ll_configure_address">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_backpack"
+                android:layout_width="@dimen/picture_size_width_big"
+                android:layout_height="@dimen/picture_size_height_big"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                app:srcCompat="@drawable/ic_map_layer" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_configure_backpack"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+
+                android:contentDescription="@string/item_description_configure_account"
+                android:text="@string/configure_group"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textSize="@dimen/text_size_big"
+
+                tools:text="@string/configure_account" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_arrow_backpack"
+                android:layout_width="@dimen/picture_size_width_medium"
+                android:layout_height="@dimen/picture_size_height_medium"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:onClick="@{()-> callbackBackpack.configure()}"
+                app:srcCompat="@drawable/ic_minimalist_arrow" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/small_margin"
+            android:enabled="false"
+            app:enabled="@{enabled}"
+            app:layout_constraintEnd_toStartOf="@+id/right_margin_guideline"
+            app:layout_constraintStart_toEndOf="@+id/left_margin_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/ll_configure_backpack">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_item"
+                android:layout_width="@dimen/picture_size_width_big"
+                android:layout_height="@dimen/picture_size_height_big"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_map_layer" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_configure_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:contentDescription="@string/item_description_configure_account"
+                android:gravity="center"
+
+                android:text="Configure Backpack"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+
+                android:textSize="@dimen/text_size_big"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_configure_item"
+                app:layout_constraintStart_toEndOf="@+id/iv_configure_item"
+                app:layout_constraintTop_toTopOf="@+id/iv_configure_item"
+
+                tools:text="@string/configure_account" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_configure_arrow_group"
+                android:layout_width="@dimen/picture_size_width_medium"
+                android:layout_height="@dimen/picture_size_height_medium"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_configure_item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_configure_item"
+
+                app:srcCompat="@drawable/ic_minimalist_arrow" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Guidelines -->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_margin_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_margin_guideline"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_margin_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

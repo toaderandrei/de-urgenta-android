@@ -28,4 +28,12 @@ class LoginViewModel : BaseViewModel() {
         loginLiveData.postValue(Result.Success(nextActivity))
     }
 
+    fun login2() {
+        val nextActivity = when (sharedPreferences.hasCompletedOnboarding()) {
+            true -> OnboardingActivity::class.java
+            false -> OnboardingActivity::class.java
+        }
+        loginLiveData.postValue(Result.Success(nextActivity))
+    }
+
 }

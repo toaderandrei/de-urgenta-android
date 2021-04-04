@@ -19,4 +19,12 @@
     <!-- Errors -->
     <string name="error_generic">A apărut o problemă!</string>
 
+    <string name="item_description_configure_account">Configureaza-ti contul.</string>
+    <string name="configure_account">Configureaza-ti contul.</string>
+    <string name="configure_group">Configureaza-ti grupul.</string>
+    <string name="save_address">Salveaza adresa</string>
+    <string name="add_another_addresses">Adauga adresa noua.</string>
+    <string name="add_living_address">Adauga adresa de domiciliu.</string>
+
+
 </resources>

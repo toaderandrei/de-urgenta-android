@@ -6,42 +6,57 @@
 
     <fragment
         android:id="@+id/create_address"
-        android:name="ro.code4.deurgenta.ui.address.ConfigureAddresses"
-        android:label="Game">
+        android:name="ro.code4.deurgenta.ui.address.ConfigureAddressFragment"
+        android:label="@string/configure_addresses">
         <action
-            android:id="@+id/action_complete"
-            app:destination="@id/complete_address"  />
+            android:id="@+id/action_save"
+            app:destination="@id/save_address" />
+
+        <!-- Action back to destination which launched into this graph -->
+        <action
+            android:id="@+id/back_to_configure_profile"
+            app:popUpTo="@id/configure_profile"
+            app:popUpToInclusive="false">
+
+            <argument
+                android:name="configured"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
 
     </fragment>
 
     <fragment
-        android:id="@+id/complete_address"
-        android:name="ro.code4.deurgenta.ui.address.CompleteAddress" >
+        android:id="@+id/save_address"
+        android:name="ro.code4.deurgenta.ui.address.CompleteAddress"
+        android:label="@string/save_address">
 
         <action
             android:id="@+id/add_new_address"
-            app:destination="@id/add_new_address"  />
+            app:destination="@id/add_new_address" />
 
-        <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
-            app:popUpTo="@id/configure_profile"
+        <action
+            android:id="@+id/set_meeting_point"
+            app:destination="@id/set_meeting_point" />
+
+        <!-- Action back to create address-->
+        <action
+            android:id="@+id/action_back_to_create_address"
+            app:popUpTo="@id/create_address"
             app:popUpToInclusive="true" />
 
     </fragment>
 
     <fragment
         android:id="@+id/add_new_address"
-        android:name="ro.code4.deurgenta.ui.address.AddAnotherAddress" >
+        android:name="ro.code4.deurgenta.ui.address.AddAnotherAddress"
+        android:label="@string/add_another_addresses">
 
+        <!-- Action back to create address -->
         <action
-            android:id="@+id/set_meeting_point"
-            app:destination="@id/set_meeting_point"  />
-
-        <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
-            app:popUpTo="@id/configure_profile"
+            android:id="@+id/action_back_to_create_address"
+            app:popUpTo="@id/configure_addresses"
             app:popUpToInclusive="true" />
-
     </fragment>
 
 </navigation>

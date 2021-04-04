@@ -6,15 +6,14 @@ import io.reactivex.disposables.CompositeDisposable
 import org.koin.core.KoinComponent
 import ro.code4.deurgenta.helper.SingleLiveEvent
 
-abstract class BaseViewModel : ViewModel(), KoinComponent {
+abstract  class BaseViewModel(private val useCase: UseCase<*, *>? = null) : ViewModel(), KoinComponent {
     val messageIdToastLiveData = SingleLiveEvent<String>()
-    val disposables = CompositeDisposable()
 
     fun messageToast(): LiveData<String> = messageIdToastLiveData
     open fun onError(throwable: Throwable) = Unit
 
     override fun onCleared() {
         super.onCleared()
-        disposables.clear()
+        useCase?.dispose()
     }
 }

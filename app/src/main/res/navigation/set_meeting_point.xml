@@ -24,7 +24,7 @@
             app:popUpToInclusive="true" />
 
         <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
+        <action android:id="@+id/back_to_configure_profile"
             app:popUpTo="@id/configure_profile"
             app:popUpToInclusive="true" />
 

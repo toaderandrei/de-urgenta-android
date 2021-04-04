@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/onboard_graph.xml"
-    app:startDestination="@id/configure_profile">
-
-    <fragment
-        android:id="@+id/configure_profile"
-        android:name="ro.code4.deurgenta.ui.profile.ConfigureAccountFragment"
-        android:label="fragment_configure_profile">
-        <action
-            android:id="@+id/navigate_to_configure_address"
-            app:destination="@id/configure_addresses" />
-
-        <action
-            android:id="@+id/navigate_to_configure_group"
-            app:destination="@id/configure_group" />
-    </fragment>
+    android:id="@+id/onboard_details_graph.xml">
 
     <fragment
         android:id="@+id/configure_addresses"
-        android:name="ro.code4.deurgenta.ui.address.ConfigureAddressFragment"
+        android:name="ro.code4.deurgenta.ui.profile.ConfigureAccountFragment"
         android:label="fragment_configure_addresses">
 
         <!-- Launch Configure addresses Navigation Graph -->
@@ -49,19 +35,15 @@
             app:destination="@id/configure_profile" />
     </fragment>
 
+    <activity
+        android:id="@+id/configure_profile"
+        android:name="ro.code4.deurgenta.ui.onboarding.OnboardingActivity">
+        <argument
+            android:name="configure_type"
+            app:argType="string" />
+    </activity>
 
     <include app:graph="@navigation/configure_addresses" />
     <include app:graph="@navigation/configure_group" />
 
 </navigation>
-
-    <!--    <activity-->
-    <!--        android:id="@+id/activity_details_configure"-->
-    <!--        android:name="ro.code4.deurgenta.ui.onboarding.OnboardingDetailsActivity"-->
-    <!--        android:label="Configure"-->
-    <!--        tools:layout="@layout/details_activity_onboarding">-->
-    <!--        <argument-->
-    <!--            android:name="configure_type"-->
-    <!--            app:argType="string" />-->
-
-    <!--    </activity>-->

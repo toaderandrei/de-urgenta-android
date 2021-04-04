@@ -19,4 +19,16 @@
     <!-- Errors -->
     <string name="error_generic">Something went wrong!</string>
 
+    <!-- screen names -->
+    <string name="configure_addresses" translatable="false">Configure Addresses</string>
+
+    <!-- todo to be checked for spelling and grammer.-->
+    <string name="item_description_configure_account">Configure your account</string>
+    <string name="configure_account">Configure your account</string>
+    <string name="save_address">Complete Address</string>
+    <string name="add_another_addresses">Add Another Address</string>
+    <string name="add_living_address">Add your living address</string>
+    <string name="configure_group">Configure group</string>
+
+
 </resources>

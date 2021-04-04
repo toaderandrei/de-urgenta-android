@@ -39,6 +39,10 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    buildFeatures {
+        dataBinding true
+    }
+
     sourceSets {
         androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
@@ -101,6 +105,7 @@ ext {
     firebaseMessagingVersion = "20.2.0"
     firebaseConfigVersion = "19.1.4"
     adapterDelegatesVersion = "4.2.0"
+    glideVersion = "4.9.0"
 }
 
 dependencies {
@@ -120,32 +125,40 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.4'
     implementation "com.hannesdorfmann:adapterdelegates4:$adapterDelegatesVersion"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
     // Navigation
-    implementation "androidx.navigation:navigation-fragment:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui:$navigationVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
     // Firebase
     implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
     implementation "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticsVersion"
+
     // Koin injection
     implementation "org.koin:koin-android:$koinVersion"
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
+
     // Parceler
     implementation "org.parceler:parceler-api:$parcelerVersion"
     kapt "org.parceler:parceler:$parcelerVersion"
+
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 
     // Unit tests
     testImplementation 'junit:junit:4.13'

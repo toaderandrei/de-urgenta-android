@@ -13,7 +13,7 @@
             app:destination="@id/create_new_group"  />
 
         <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
+        <action android:id="@+id/back_to_configure_profile"
             app:popUpTo="@id/configure_profile"
             app:popUpToInclusive="true" />
 
@@ -28,7 +28,7 @@
             app:destination="@id/invite_friends_to_group"  />
 
         <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
+        <action android:id="@+id/back_to_configure_profile"
             app:popUpTo="@id/configure_profile"
             app:popUpToInclusive="true" />
 
@@ -43,7 +43,7 @@
             app:destination="@id/add_friends_to_group"  />
 
         <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
+        <action android:id="@+id/back_to_configure_profile"
             app:popUpTo="@id/configure_profile"
             app:popUpToInclusive="true" />
 
@@ -54,7 +54,7 @@
         android:name="ro.code4.deurgenta.ui.group.AddFriendsToGroup" >
 
         <!-- Action back to destination which launched into this in_game_nav_graph-->
-        <action android:id="@+id/action_back_to_configure"
+        <action android:id="@+id/back_to_configure_profile"
             app:popUpTo="@id/configure_profile"
             app:popUpToInclusive="true" />
 
