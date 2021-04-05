@@ -34,6 +34,7 @@
     <string name="make_your_emergency_backpack">Make your emergency backpack</string>
     <string name="learn_to_give_firstaid">Learn how to give first aid</string>
     <string name="locate_me">Locate me</string>
+    <string name="search_hint">enter your address</string>
 
 
 </resources>

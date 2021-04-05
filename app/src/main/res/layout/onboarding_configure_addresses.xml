@@ -32,7 +32,6 @@
             android:animateLayoutChanges="true"
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
-
             android:theme="@style/AppTheme">
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -42,22 +41,22 @@
                 android:background="@android:color/transparent"
                 app:navigationIcon="@drawable/ic_close_24"
                 app:title="Add your own address"
-                app:titleTextColor="@color/white">
+                app:titleTextColor="@color/white" />
 
-            </com.google.android.material.appbar.MaterialToolbar>
-
-            <EditText
-                android:id="@+id/edit_query_map"
+            <SearchView
+                android:id="@+id/query_search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin"
                 android:background="@color/white"
-                android:drawableEnd="@android:drawable/ic_menu_search"
-                android:ems="10"
-                android:hint="@string/enter_your_address" />
-
+                android:iconifiedByDefault="false"
+                android:layoutDirection="rtl"
+                android:queryBackground="@color/transparent"
+                android:queryHint="@string/search_hint"
+                android:searchHintIcon="@android:drawable/ic_menu_search"
+                android:searchIcon="@null"
+                tools:targetApi="lollipop_mr1" />
         </com.google.android.material.appbar.AppBarLayout>
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -101,9 +100,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>

@@ -1,26 +1,30 @@
 package ro.code4.deurgenta.ui.address
 
 import android.annotation.SuppressLint
-import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.here.sdk.core.GeoCoordinates
 import com.here.sdk.mapview.*
 import kotlinx.android.synthetic.main.onboarding_configure_addresses.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.code4.deurgenta.R
 import ro.code4.deurgenta.databinding.OnboardingConfigureAddressesBinding
+import ro.code4.deurgenta.helper.MapViewUtils
 import ro.code4.deurgenta.helper.PermissionUtils
+import ro.code4.deurgenta.helper.hideSoftInput
+import ro.code4.deurgenta.helper.setKeyboardFocus
 import ro.code4.deurgenta.interfaces.LocateMeCallback
 import ro.code4.deurgenta.interfaces.SaveProgressCallback
 import ro.code4.deurgenta.ui.base.ViewModelFragment
+import java.util.*
 
 @SuppressLint("LongLogTag")
 class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>() {
@@ -31,13 +35,13 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>() 
     override val screenName: Int
         get() = R.string.configure_addresses
 
-
     override val viewModel: ConfigureAddressViewModel by viewModel()
     private lateinit var mapView: MapView
+    private lateinit var permissionsUtils: PermissionUtils
 
-    private var permissionsRequestor: PermissionUtils? = null
-
+    private lateinit var mapViewUtils: MapViewUtils
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     lateinit var viewBinding: OnboardingConfigureAddressesBinding
 
     override fun onCreateView(
@@ -54,43 +58,42 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>() 
 
         viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.appbar.toolbar.setOnClickListener {
-            Log.d(TAG, "clicked close.")
             findNavController().navigate(R.id.back_to_configure_profile)
         }
-        // Get a MapView instance from layout.
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        loadMap(savedInstanceState)
+        initMapAndLocationServices(savedInstanceState)
         handleAndroidPermissions()
     }
 
     private fun handleAndroidPermissions() {
-
-        permissionsRequestor =
+        permissionsUtils =
             PermissionUtils(requireActivity())
 
-        permissionsRequestor!!.request(object : PermissionUtils.ResultListener {
+        permissionsUtils.request(object : PermissionUtils.ResultListener {
             override fun permissionsGranted() {
                 Log.d(TAG, "permission granted.")
-                initLocationServices()
-                initMapData()
-                loadLastKnownLocation(false)
+                initMapButtonCallbacks()
+                mapViewUtils.loadLastKnownLocation(false)
+                initSearchView()
             }
 
             override fun permissionsDenied() {
-                Log.e(TAG, "Permissions denied by user.")
+                Log.e(TAG, "Permissions denied by user, return back to the configure profile.")
+                findNavController().navigate(R.id.configure_profile)
             }
         })
     }
 
-    fun initLocationServices() {
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
-
+    fun initSearchView() {
+        viewBinding.appbar.query_search.apply {
+            setOnQueryTextListener(onQueryTextListener(this@apply))
+        }
     }
 
-    private fun initMapData() {
+    private fun initMapButtonCallbacks() {
         viewBinding.saveCallback = object : SaveProgressCallback {
             override fun save() {
                 Log.d(TAG, "save address")
@@ -99,19 +102,9 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>() 
 
         viewBinding.locateMeCallback = object : LocateMeCallback {
             override fun locateMe() {
-                loadLastKnownLocation(true)
+                mapViewUtils.loadLastKnownLocation(true)
             }
         }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun loadLastKnownLocation(showLocation: Boolean) {
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                location?.let {
-                    loadMapScene(it, showLocation)
-                }
-            }
     }
 
     override fun onRequestPermissionsResult(
@@ -119,44 +112,78 @@ class ConfigureAddressFragment : ViewModelFragment<ConfigureAddressViewModel>() 
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        permissionsRequestor!!.onRequestPermissionsResult(requestCode, grantResults)
+        permissionsUtils.onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    private fun loadMap(savedInstanceState: Bundle?) {
-        // Get a MapView instance from layout.
+    private fun initMapAndLocationServices(savedInstanceState: Bundle?) {
         mapView = activity?.findViewById(R.id.map_view)!!
         mapView.onCreate(savedInstanceState)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        mapViewUtils = MapViewUtils(mapView, fusedLocationClient, mapViewCallback)
+    }
+
+    private val mapViewCallback = object : MapViewUtils.MapViewCallback {
+        override fun onError(error: String) {
+            Log.e(TAG, "error loading results:$error")
+            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+        }
+
+        override fun onSuggestionError(error: String) {
+            Log.d(TAG, "error loading autosuggestion results:$error")
+        }
+
+        override fun onAddMarker() {
+            updateSaveButtonVisibility(View.VISIBLE)
+        }
+
+        override fun suggest(suggest: String) {
+            Log.d(TAG, "autosuggestion text.$suggest")
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        mapView.onResume()
+        mapViewUtils.onResume()
     }
 
-    private fun loadMapScene(location: Location, showLocation: Boolean) {
-        // Load a scene from the SDK to render the map with a map style.
-        mapView.mapScene
-            .loadScene(MapScheme.NORMAL_DAY) { errorCode ->
-                if (errorCode == null) {
-                    val distanceInMeters = (100 * 10).toDouble()
-                    val geoCoordinates = GeoCoordinates(location.latitude, location.longitude)
-                    mapView.camera.lookAt(
-                        geoCoordinates, distanceInMeters
-                    )
-                    if (showLocation) {
-                        mapView.mapScene.addMapMarker(createPoiMapMarker(geoCoordinates))
-                        viewBinding.btSaveAddress.visibility = View.VISIBLE
-                    }
-                } else {
-                    Log.d(TAG, "onLoadScene failed: $errorCode")
-                }
+    override fun onStop() {
+        super.onStop()
+        mapViewUtils.onPause()
+    }
+
+    private fun onQueryTextListener(view: View): SearchView.OnQueryTextListener {
+        return object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                dismissKeyboard(view)
+                searchOnMap(query)
+                return true
             }
+
+            override fun onQueryTextChange(queryString: String): Boolean {
+                // Hack
+                if (queryString.isNullOrEmpty()) {
+                    updateSaveButtonVisibility(View.GONE)
+                }
+                searchOnMapAutoSuggestion(queryString)
+                return true
+            }
+        }
     }
 
-    private fun createPoiMapMarker(geoCoordinates: GeoCoordinates): MapMarker {
-        val mapImage: MapImage =
-            MapImageFactory.fromResource(requireContext().resources, R.drawable.poi)
-        return MapMarker(geoCoordinates, mapImage)
+    private fun updateSaveButtonVisibility(flag: Int) {
+        viewBinding.btSaveAddress.visibility = flag
+    }
+
+    private fun searchOnMap(queryString: String) {
+        mapViewUtils.searchOnMap(queryString)
+    }
+
+    private fun searchOnMapAutoSuggestion(queryString: String) {
+        mapViewUtils.searchOnMapAutoSuggestion(queryString)
+    }
+
+    fun dismissKeyboard(view: View) {
+        hideSoftInput(view)
     }
 
     companion object {

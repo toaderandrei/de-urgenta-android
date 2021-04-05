@@ -54,14 +54,3 @@
     <include app:graph="@navigation/configure_group" />
 
 </navigation>
-
-    <!--    <activity-->
-    <!--        android:id="@+id/activity_details_configure"-->
-    <!--        android:name="ro.code4.deurgenta.ui.onboarding.OnboardingDetailsActivity"-->
-    <!--        android:label="Configure"-->
-    <!--        tools:layout="@layout/details_activity_onboarding">-->
-    <!--        <argument-->
-    <!--            android:name="configure_type"-->
-    <!--            app:argType="string" />-->
-
-    <!--    </activity>-->

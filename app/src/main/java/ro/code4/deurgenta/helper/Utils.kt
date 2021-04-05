@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.SearchView
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -53,7 +54,8 @@ fun Context.isOnline(): Boolean {
             val nc = cm.getNetworkCapabilities(n)
             //It will check for both wifi and cellular network
             return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
-                NetworkCapabilities.TRANSPORT_WIFI)
+                NetworkCapabilities.TRANSPORT_WIFI
+            )
         }
         return false
     } else {
@@ -82,8 +84,10 @@ fun collapseKeyboardIfFocusOutsideEditText(
             val srcCoordinates = IntArray(2)
             oldFocusedView.getLocationOnScreen(srcCoordinates)
 
-            val rect = Rect(srcCoordinates[0], srcCoordinates[1], srcCoordinates[0] +
-                    oldFocusedView.width, srcCoordinates[1] + oldFocusedView.height)
+            val rect = Rect(
+                srcCoordinates[0], srcCoordinates[1], srcCoordinates[0] +
+                        oldFocusedView.width, srcCoordinates[1] + oldFocusedView.height
+            )
 
             if (rect.contains(motionEvent.x.toInt(), motionEvent.y.toInt()))
                 return
@@ -96,4 +100,23 @@ fun collapseKeyboardIfFocusOutsideEditText(
         ContextCompat.getSystemService(newFocusedView.context, InputMethodManager::class.java)
             ?.hideSoftInputFromWindow(newFocusedView.windowToken, 0)
     }
+}
+
+fun SearchView.setKeyboardFocus() {
+    setOnQueryTextFocusChangeListener { view, hasFocus ->
+        if (hasFocus) {
+            showSoftInput(view.findFocus())
+        }
+    }
+    requestFocus()
+}
+
+fun hideSoftInput(view: View) {
+    val imm = view.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun showSoftInput(view: View) {
+    val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.showSoftInput(view, InputMethodManager.SHOW_FORCED)
 }
