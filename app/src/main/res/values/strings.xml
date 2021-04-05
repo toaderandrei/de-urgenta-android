@@ -25,7 +25,7 @@
     <!-- todo to be checked for spelling and grammer.-->
     <string name="item_description_configure_account">Configure your account</string>
     <string name="create_your_account">Configure your account</string>
-    <string name="save_address">Complete Address</string>
+    <string name="save_address">Save Address</string>
     <string name="add_another_addresses">Add Another Address</string>
     <string name="add_living_address">Add your living address</string>
     <string name="create_your_group">Create your group</string>
@@ -33,6 +33,7 @@
     <string name="item_description_configure_group">Create your group</string>
     <string name="make_your_emergency_backpack">Make your emergency backpack</string>
     <string name="learn_to_give_firstaid">Learn how to give first aid</string>
+    <string name="locate_me">Locate me</string>
 
 
 </resources>

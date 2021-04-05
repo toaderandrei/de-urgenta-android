@@ -50,7 +50,7 @@ public class PermissionsRequestor {
         void permissionsDenied();
     }
 
-    public void request(ResultListener resultListener) {
+    public void request(final ResultListener resultListener) {
         this.resultListener = resultListener;
 
         String[] missingPermissions = getPermissionsToRequest();
